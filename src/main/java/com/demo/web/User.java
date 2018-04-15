@@ -1,4 +1,4 @@
-package com.demo.web.bean;
+package com.demo.web;
 
 import com.apidoc.annotation.Table;
 
@@ -12,18 +12,18 @@ public class User {
 
     private String id;//编号
     private String name;//姓名
-    private String age;//年龄
+    private Integer age;//年龄
 
     public User() {
     }
 
-    public User(String name, String age) {
+    public User(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
 
 
-    public User(String id, String name, String age) {
+    public User(String id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -45,11 +45,11 @@ public class User {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
