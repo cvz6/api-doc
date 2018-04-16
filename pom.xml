@@ -45,6 +45,11 @@
             <artifactId>hutool-all</artifactId>
             <version>4.0.1</version>
         </dependency>
+        <!--mysql链接依赖-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
