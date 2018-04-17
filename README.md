@@ -1,5 +1,9 @@
 # api-doc 
 java开发，根据代码自动生成api接口文档工具，支持RESTful风格
+
+github： https://github.com/liepeng328/api-doc
+开源中国： https://gitee.com/lovepeng/api-doc
+
 # 预览
 ![基本信息](https://upload-images.jianshu.io/upload_images/2833665-a2ce576b7438c8ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![演示](https://upload-images.jianshu.io/upload_images/2833665-cba03dffe34b6793.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
