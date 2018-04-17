@@ -33,7 +33,8 @@ public class ApiDocController {
     private String userName;//数据库用户名
     @Value("${spring.datasource.password}")
     private String password;//数据库密码
-    private String dataBaseName = "cloud";//数据库名
+    private String dataBaseName = "test" +
+            "";//数据库名
 
     /**
      * 后台管理系统文档
@@ -52,7 +53,7 @@ public class ApiDocController {
                 apiDoc = new GeneratorApiDoc()
                         .setInfo(//设置文档基本信息
                                 new ApiDocInfo()
-                                        .setTitle("公共文化云后台管理系统")
+                                        .setTitle("某莫系统后台管理文档")
                                         .setVersion("1.0")
                                         .setDescription("")
 
@@ -67,7 +68,7 @@ public class ApiDocController {
                 apiDoc = new GeneratorApiDoc()
                         .setInfo(//设置文档基本信息
                                 new ApiDocInfo()
-                                        .setTitle("公共文化云前端接口文档")
+                                        .setTitle("某莫系统前端接口文档")
                                         .setVersion("1.0")
                                         .setDescription("")
 

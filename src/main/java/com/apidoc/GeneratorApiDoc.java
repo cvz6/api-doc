@@ -182,6 +182,9 @@ public class GeneratorApiDoc {
      */
     public ApiDocAction getApiOfMethod(String methodUUID) {
         Method method = methodMap.get(methodUUID);
+        if(null==method){
+            throw new RuntimeException("找不到相应方法： "+methodMap.get(methodUUID));
+        }
         ApiAction apiAction = method.getAnnotation(ApiAction.class);
         if (null != apiAction) {
             ApiDocAction apiDocAction = new ApiDocAction();

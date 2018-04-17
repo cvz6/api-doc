@@ -1,0 +1,53 @@
+{
+  "info": { //文档基本信息
+    "title": "标题",
+    "version": "版本信息",
+    "description": "相关描述"
+  },
+  "models": [//功能模块列表
+    {
+      "name": "模块名称",
+      "rootMapping": "模块映射（模块映射和功能映射组成url） 如：/test",
+      "list": [//功能列表
+        {
+          "name": "功能名称",
+          "description": "功能描述",
+          "mapping": "功能映射（模块映射和功能映射组成完整的url） 如：/query",
+          "method": "请求方式 如：post",
+          "reqParams": {//请求参数
+            "type": "参数类型 如：json",
+            "params": [//参数
+              {
+                "dataType": "数据类型 如：number",
+                "description": "描述",
+                "name": "名称",
+                "required": false //是否必须
+              },
+              {
+                //等同于上一个对象，多个对象组成 请求参数
+              }
+            ]
+          },
+          "respParams": {//响应参数
+            "params": [//参数
+              {
+                "dataType": "数据类型 如：number",
+                "description": "描述",
+                "name": "名称"
+              },
+              {
+                //等同于上一个对象，多个对象组成 响应参数
+              }
+            ]
+          }
+        },
+        {
+          //等同于上一个对象，多个对象组成 功能列表
+        }
+      ]
+    },
+    {
+      //等同于上一个对象，多个对象组成 功能模块列表
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+//扫描解析java类文件，组装成如下json数据，发给前端
+
+//模块列表json格式
+{
+  "info": {//api文档信息
+    "title": "文档标题 如：某后台管理系统文档",
+    "version": "版本1.0",
+    "description": "描述"
+  },
+  "models": [//功能模块
+    {
+      "name": "模块名称",
+      "rootMapping": "模块路由映射",
+      "list": [//模块列表
+        {
+          "methoduuid": "对应方法的唯一编号，类名+方法名 如： class com.demo.web.UserTestController_add",
+          "name": "添加用户"
+        }
+      ]
+    }
+  ]
+}
+
+
+//功能详情json格式
+{
+  "description": "描述",
+  "mapping": "url映射，如 /find",
+  "method": "http动作 如:post",
+  "name": "功能名称",
+  "reqParams": {
+    //请求参数
+    "type": "json",
+    //参数类型
+    "params": [
+      //参数列表
+      {
+        "dataType": "数据类型",
+        "description": "描述",
+        "name": "参数名称",
+        "required": "是否为必填信息 true/false",
+        "list": [
+          {
+            "dataType": "数据类型",
+            "description": "描述",
+            "name": "参数名称",
+            "list": []
+          }
+        ]
+      }
+    ]
+  },
+  "respParams": {//响应参数
+    "params": [//参数列表
+      {
+        "dataType": "数据类型",
+        "description": "描述",
+        "name": "参数名称",
+        "list": [
+          {
+            "dataType": "数据类型",
+            "description": "描述",
+            "name": "参数名称",
+            "list": []
+          }
+        ]
+      }
+    ]
+  }
+}
+

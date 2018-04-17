@@ -14,10 +14,10 @@ import java.util.List;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "用户管理", mapping = "test")
+@Api(name = "测试文档生成", mapping = "test")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/test")
+public class UserTestController {
 
 
     /**

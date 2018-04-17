@@ -1,5 +1,7 @@
 package com.apidoc.utis.utils;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * @Description: json工具类
  * @Author: peng.liu
@@ -14,6 +16,6 @@ public class JsonUtil {
      * @return
      */
     public static String toString(Object object) {
-        return JsonUtil.toString(object);
+        return JSON.toJSONString(object);
     }
 }
