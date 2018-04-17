@@ -1,2 +1,4 @@
-# api-doc
-自动化生成api文档的前端界面，angular实现版
+# api-doc 
+java开发，根据代码自动生成api接口文档工具，支持RESTful风格
+
+
