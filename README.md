@@ -41,7 +41,7 @@ ApiDoc apiDoc = new GeneratorApiDoc()
 
                         )
                         .generator(packageName);//指定生成哪个包下controller的文档
- System.err.println(JsonUtil.toString(detail));
+ System.err.println(JsonUtil.toString(apiDoc));
 
 //详细功能接口
 ApiDocAction detail = new GeneratorApiDoc()
