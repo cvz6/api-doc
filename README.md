@@ -115,7 +115,7 @@ ApiRespParams： 响应参数
 感谢 spring-boot
 感谢@路晓磊 的工具类hutool https://gitee.com/loolly/hutool
 感谢阿里fastjson
-感谢阿里angular开源框架ng-zorro
+感谢阿里angular版前端开源框架ng-zorro
 
 
 # 欢迎加入群交流
