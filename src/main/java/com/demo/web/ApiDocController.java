@@ -68,7 +68,7 @@ public class ApiDocController {
                 apiDoc = new GeneratorApiDoc()
                         .setInfo(//设置文档基本信息
                                 new ApiDocInfo()
-                                        .setTitle("某莫系统前端接口文档")
+                                        .setTitle("某某系统前端接口文档")
                                         .setVersion("1.0")
                                         .setDescription("")
 

@@ -5,7 +5,7 @@
   "info": {//api文档信息
     "title": "文档标题 如：某后台管理系统文档",
     "version": "版本1.0",
-    "description": "描述"
+    "description": "描dist述"
   },
   "models": [//功能模块
     {
