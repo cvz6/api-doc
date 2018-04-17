@@ -14,7 +14,7 @@ public class ApidocApplication {
 
     private static void printServerUrl() {
 
-        String url = String.format("http://%s%s%s", "localhost", ":8080", "");
+        String url = String.format("http://%s%s%s", "localhost", ":8080", "/index.html");
 
         System.err.println("-----------------------------------------------------------------");
         System.err.println();

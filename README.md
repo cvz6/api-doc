@@ -52,7 +52,7 @@ ApiDocAction detail = new GeneratorApiDoc()
 ```
 
 # 一个详细的例子
-一个详细例子如下代码，这里是springboot/springmvc的controller示例（展示两个文档，前端接口和后台接口）参考代码这个类UserController.java
+一个详细例子如下代码，这里是springboot/springmvc的controller示例（展示两个文档，前端接口和后台接口）参考代码这个类 UserController.java
 
 # 注解详细介绍
 共有6个注解，标注出整个文档信息（我为什么讲那么详细，那么啰嗦，而且我没有把这个项目打成jar包直接给别人使用，就是因为文档生成最大可能是需要特殊定制，确保你拿到该代码可以个性化定制功能，随意修改）。
@@ -100,3 +100,18 @@ ApiRespParams： 响应参数
 - ApiParam： 该参数等同于请求参数中的ApiParam，参考如上描述
 ![](https://upload-images.jianshu.io/upload_images/2833665-0373d707dd37b9f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+# 下载本项目并运行
+配置jdk8以上版本，下载代码，运行ApidocApplication类main方法即可。
+然后访问地址 http://localhost:8080/index.html
+![](https://upload-images.jianshu.io/upload_images/2833665-ebdf7ed6bdefb210.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![](https://upload-images.jianshu.io/upload_images/2833665-6ac946d6c51e320b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![](https://upload-images.jianshu.io/upload_images/2833665-d6f5fa7b60b0b4ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 感谢列表
+该项目为maven项目，引用工具请查看 pom.xml
+感谢 spring-boot
+感谢@路晓磊 的工具类hutool https://gitee.com/loolly/hutool
+感谢阿里fastjson
