@@ -23,12 +23,13 @@ java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 
 项目后端使用java代码，前端使用angular开发。Java开发时，使用注解把文档相关信息标注在类的方法上，通过工具自动扫描代码的注解，生成json数据，发给前端，前端angular解析生成页面
 
-
 本项目自带一个spring-boot框架为基础的demo（这里使用spring-boot做演示的demo仅仅是为了方便，本质上只要是java写的项目都可以用该工具），前端用angular做了一个比较漂亮的界面（最终前端界面都编译成了html，如果你前端不熟悉，可以跳过，不用管他），这里使用angular开发仅仅是我比较喜欢，你可以用任何你喜欢的的前端框架或者仅仅使用html写一个漂亮的界面就可以。
 
 后端项目开源地址：https://github.com/liepeng328/api-doc
 
 前端开源地址：https://github.com/liepeng328/api-doc-angular
+
+后端数据说明在这里 [src/main/resources/doc/数据说明.json](src/main/resources/doc/数据说明.json)
 
 ![功能目录对应关系](https://upload-images.jianshu.io/upload_images/2833665-d9627161b59b7673.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
