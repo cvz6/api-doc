@@ -1,9 +1,11 @@
-# api-doc 
+# api-doc  文档生成工具
 java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 
-### github： https://github.com/liepeng328/api-doc
+预览版 [http://lovepeng.gitee.io/apidoc](http://lovepeng.gitee.io/apidoc)
 
-### 开源中国： https://gitee.com/lovepeng/api-doc
+##### Github开源地址： https://github.com/liupeng328/api-doc
+
+##### 开源中国地址： https://gitee.com/lovepeng/api-doc
 
 # 预览
 ![基本信息](https://upload-images.jianshu.io/upload_images/2833665-a2ce576b7438c8ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
