@@ -114,25 +114,30 @@ ApiRespParams： 响应参数
 
 
 # 下载本项目并运行
-配置jdk8以上版本，下载代码，运行ApidocApplication类main方法即可。
-然后访问地址 http://localhost:8080/index.html
+配置jdk8以上版本，下载代码，在mysql数据库创建一个user表，
+sql在这里 [src/main/resources/db/sql.sql](src/main/resources/db/sql.sql)
+运行[ApidocApplication](src/main/java/com/demo/ApidocApplication.java)类main方法即可
+然后访问地址 [http://localhost:8080/index.html](http://localhost:8080/index.html)
+
 ![](https://upload-images.jianshu.io/upload_images/2833665-ebdf7ed6bdefb210.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![](https://upload-images.jianshu.io/upload_images/2833665-6ac946d6c51e320b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![](https://upload-images.jianshu.io/upload_images/2833665-d6f5fa7b60b0b4ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 # 欢迎加入开发
-#### 提交bug，讨论问题 https://github.com/liepeng328/api-doc/issues/new
+提交bug，讨论问题,提出建议 https://github.com/liepeng328/api-doc/issues/new
 参与代码修改或者文档修改，请fork本项目，然后提交pull request，这是0.0.1版，争取做到比swagger好用，尤其对国内开发者友好
 欢迎各种建议，请提交issues
 
 # 感谢列表
 该项目为maven项目，引用工具请查看 pom.xml
+
 感谢 spring-boot
-感谢@路晓磊 的工具类hutool https://gitee.com/loolly/hutool
+
+感谢@路晓磊 的工具类hutool
+
 感谢阿里fastjson
+
 感谢阿里angular版前端开源框架ng-zorro
 
 
