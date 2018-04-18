@@ -1,8 +1,9 @@
 # api-doc 
 java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 
-github： https://github.com/liepeng328/api-doc
-开源中国： https://gitee.com/lovepeng/api-doc
+### github： https://github.com/liepeng328/api-doc
+
+### 开源中国： https://gitee.com/lovepeng/api-doc
 
 # 预览
 ![基本信息](https://upload-images.jianshu.io/upload_images/2833665-a2ce576b7438c8ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -113,6 +114,12 @@ ApiRespParams： 响应参数
 ![](https://upload-images.jianshu.io/upload_images/2833665-6ac946d6c51e320b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![](https://upload-images.jianshu.io/upload_images/2833665-d6f5fa7b60b0b4ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+# 欢迎加入开发
+#### 提交bug，讨论问题 https://github.com/liepeng328/api-doc/issues/new
+参与代码修改或者文档修改，请fork本项目，然后提交pull request，这是0.0.1版，争取做到比swagger好用，尤其对国内开发者友好
+欢迎各种建议
 
 # 感谢列表
 该项目为maven项目，引用工具请查看 pom.xml
