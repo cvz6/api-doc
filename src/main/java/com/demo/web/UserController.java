@@ -1,5 +1,6 @@
 package com.demo.web;
 
+import cn.hutool.json.JSONUtil;
 import com.apidoc.annotation.*;
 import com.apidoc.enumeration.DataType;
 import com.apidoc.enumeration.Method;
@@ -155,7 +156,7 @@ public class UserController {
     @ApiAction(name = "上传多个文件", mapping = "/files", method = Method.POST)
     @ApiReqParams(type = ParamType.FORM,
             value = {
-                    @ApiParam(name = "files", dataType = DataType.OBJECT, description = "文件",object = "files"),
+                    @ApiParam(name = "files", dataType = DataType.FILE, description = "文件"),
             })
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
@@ -163,7 +164,8 @@ public class UserController {
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
     @PostMapping("/files")
-    public Result files(@RequestParam("files") MultipartFile[] file) {
-        return Result.success("共计上传文件个数： "+file.length);
+    public Result files(@RequestParam("files") MultipartFile[] files) {
+        System.out.println(files.length);
+        return Result.success(files.length);
     }
 }
