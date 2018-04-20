@@ -4,9 +4,12 @@ import com.apidoc.annotation.*;
 import com.apidoc.enumeration.DataType;
 import com.apidoc.enumeration.Method;
 import com.apidoc.enumeration.ParamType;
+import com.apidoc.utis.utils.JsonUtil;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -69,7 +72,7 @@ public class UserController {
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
     @GetMapping("/get/param")
-    public Result getUserByIDParam( String id) {
+    public Result getUserByIDParam(String id) {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 
@@ -94,33 +97,7 @@ public class UserController {
         return Result.success(list);
     }
 
-//todo 其他测试，这几天补上
-
-
-
-
-
-
-
-
-    @ApiAction(name = "添加用户", mapping = "/add", method = Method.POST)
-    @ApiReqParams(type = ParamType.JSON, value = {@ApiParam(value = User.class, remove = {"id"})})
-    @ApiRespParams({
-            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
-            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据"),
-            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
-    })
-    @PostMapping("/add")
-    public Result add(@RequestBody User user) {
-        return Result.success();
-    }
-
-
-    /**
-     * 测试失败
-     *
-     * @return Result
-     */
+    //演示：put请求
     @ApiAction(name = "测试失败信息", mapping = "/fail", method = Method.PUT)
     @ApiReqParams(type = ParamType.JSON, value = {@ApiParam(value = User.class, remove = {"id"})})
     @ApiRespParams({
@@ -133,28 +110,60 @@ public class UserController {
         return Result.fail();
     }
 
-    /**
-     * 查询
-     *
-     * @return
-     */
-    @ApiAction(name = "查询用户", mapping = "/find", method = Method.POST)
+    //演示：delete请求
+    @ApiAction(name = "测试delete请求", mapping = "/delete", method = Method.DELETE)
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据"),
+            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
+    })
+    @DeleteMapping("/delete")
+    public Result delete() {
+        return Result.success();
+    }
+
+    //演示：post请求 参数为json
+    @ApiAction(name = "添加用户", mapping = "/add", method = Method.POST)
     @ApiReqParams(type = ParamType.JSON, value = {@ApiParam(value = User.class, remove = {"id"})})
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
-            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据", object = "user"),
-            @ApiParam(name = "name", dataType = DataType.STRING, defaultValue = "", description = "姓名", belongTo = "user"),
-            @ApiParam(name = "age", dataType = DataType.NUMBER, defaultValue = "", description = "年龄", belongTo = "user"),
-
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据"),
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
-    @PostMapping("/find")
-    public Result find(User user) {
-        List<User> list = new ArrayList<>(5);
-        list.add(new User("1001", "张三", 18));
-        list.add(new User("1002", "李四", 45));
-        list.add(new User("1003", "老五", 34));
-        list.add(new User("1041", "admin", 18));
-        return Result.success(list);
+    @PostMapping("/add")
+    public Result add(@RequestBody User user) {
+        return Result.success();
+    }
+
+    //演示：post请求 单上传文件
+    @ApiAction(name = "上传单个文件", mapping = "/file", method = Method.POST)
+    @ApiReqParams(type = ParamType.FORM,
+            value = {
+                    @ApiParam(name = "file", dataType = DataType.FILE, description = "文件"),
+            })
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "文件名称"),
+            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
+    })
+    @PostMapping("/file")
+    public Result file(@RequestParam("file") MultipartFile file) {
+        return Result.success(file.getOriginalFilename());
+    }
+
+    //演示：post请求 单上传文件
+    @ApiAction(name = "上传多个文件", mapping = "/files", method = Method.POST)
+    @ApiReqParams(type = ParamType.FORM,
+            value = {
+                    @ApiParam(name = "files", dataType = DataType.OBJECT, description = "文件",object = "files"),
+            })
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "文件数量"),
+            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
+    })
+    @PostMapping("/files")
+    public Result files(@RequestParam("files") MultipartFile[] file) {
+        return Result.success("共计上传文件个数： "+file.length);
     }
 }
