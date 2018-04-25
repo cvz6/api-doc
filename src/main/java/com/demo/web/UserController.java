@@ -1,17 +1,11 @@
 package com.demo.web;
 
-import cn.hutool.json.JSONUtil;
 import com.apidoc.annotation.*;
 import com.apidoc.enumeration.DataType;
 import com.apidoc.enumeration.Method;
 import com.apidoc.enumeration.ParamType;
-import com.apidoc.utis.utils.JsonUtil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Description: 用户Controller
@@ -168,4 +162,27 @@ public class UserController {
         System.out.println(files.length);
         return Result.success(files.length);
     }
+
+    @ApiAction(name = "测试三层对象嵌套", mapping = "/aaa", method = Method.POST)
+    @ApiReqParams(type = ParamType.JSON, value = {
+            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
+            @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
+            @ApiParam(name = "creator", dataType = DataType.STRING, description = "创建人")
+    })
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, description = "状态编码"),
+            @ApiParam(name = "message", dataType = DataType.STRING, description = "信息提示"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, description = "响应数据", object = "PageResult"),
+            @ApiParam(name = "pageSize", dataType = DataType.NUMBER, description = "分页条数", belongTo = "PageResult"),
+            @ApiParam(name = "pageNum", dataType = DataType.NUMBER, description = "当前页码", belongTo = "PageResult"),
+            @ApiParam(name = "result", dataType = DataType.ARRAY, description = "结果集", belongTo = "PageResult", object = "ArchiveType"),
+            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID", belongTo = "ArchiveType"),
+            @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称", belongTo = "ArchiveType")
+    })
+    @PostMapping("/aaa")
+    public Result aaa() {
+        return Result.success("测试三层对象嵌套成功，前后端都已经改为递归实现，支持对象间无限层级嵌套");
+    }
+
+
 }
