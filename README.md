@@ -4,13 +4,21 @@ java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 预览版 [http://lovepeng.gitee.io/apidoc](http://lovepeng.gitee.io/apidoc)
 
 # 该工具的优势
+
 - 文档自动生成，减少文档维护的时间和成本
+
 - 支持复杂的接口请求参数或响应参数，比如对象的多层、互相嵌套
+
 - 支持多种参数类型（数组，List，字符串，数字，文件等等）
+
 - 支持RESTful风格的接口，同样支持普通的接口
+
 - 支持与spring/spring-boot无缝对接，支持jar包方式运行，支持war包方式运行
+
 - 支持mock功能，可直接测试接口，方便调试和检查接口写的是否正确
+
 - 方便规范整个团队的接口风格和代码，风格不一致的报错提示
+
 
 ##### Github开源地址： https://github.com/liupeng328/api-doc
 
