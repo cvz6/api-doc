@@ -115,7 +115,7 @@ public class GeneratorApiDoc {
     public ApiDoc generator(String packageName) {
         //得到所有标准了文档的controller类
         //扫描指定包路径下所有包含指定注解的类
-        Set<Class<?>> classes = ClassScanUtil.getClass4Annotation(packageName, Api.class);
+        Set<Class> classes = ClassScanUtil.getClass4Annotation(packageName, Api.class);
 //        System.err.println(JsonUtil.toString(classes));
         if (classes != null && classes.size() > 0) {
             //设置模块列表信息
@@ -132,7 +132,7 @@ public class GeneratorApiDoc {
      * @param classes
      * @return
      */
-    public List<ApiDocModel> getApiDocModelList(Set<Class<?>> classes) {
+    public List<ApiDocModel> getApiDocModelList(Set<Class> classes) {
         List<ApiDocModel> apiDocModelList = new ArrayList<>(classes.size());//保存每一个功能模块的信息
         //循环获取信息
         for (Class controllerClass : classes) {

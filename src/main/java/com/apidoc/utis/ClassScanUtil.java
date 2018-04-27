@@ -1,11 +1,11 @@
 package com.apidoc.utis;
 
 import com.apidoc.annotation.Api;
-import sun.net.www.protocol.jar.JarURLConnection;
+import com.apidoc.utis.utils.JsonUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.*;
@@ -18,16 +18,12 @@ import java.util.jar.JarFile;
  * @CreateDate: 2018/4/27 15:20
  */
 public class ClassScanUtil {
-    /**
-     * 扫描指定包路径下所有包含指定注解的类
-     *
-     * @param packageName     包名
-     * @param annotationClass 指定的注解
-     * @return set 类的集合
-     */
-    public static Set<Class<?>> getClass4Annotation(String packageName, Class<?> annotationClass) {
 
-        return getClass(packageName, annotationClass);
+    public static void main(String[] args) {
+//        String packageName = "com.demo.web";
+        String packageName = "com.demo.web.test.scanjar.com.demo.web";
+        Set<Class> set = getClass4Annotation(packageName, Api.class);
+        System.out.println(JsonUtil.toString(set));
     }
 
     /**
@@ -37,9 +33,8 @@ public class ClassScanUtil {
      * @param apiClass    指定的注解
      * @return Set
      */
-    private static Set<Class<?>> getClass(String packageName, Class<?> apiClass) {
-        List<Class<?>> classes = new ArrayList<>();
-        Set<Class<?>> classSet = new HashSet<>();
+    public static Set<Class> getClass4Annotation(String packageName, Class<?> apiClass) {
+        Set<Class> classSet = new HashSet<>();
         // 是否循环迭代
         boolean recursive = true;
         // 获取包的名字 并进行替换
@@ -67,18 +62,20 @@ public class ClassScanUtil {
                         if (fileName.endsWith(".class")) {
                             String noSuffixFileName = fileName.substring(8 + fileName.lastIndexOf("classes"), fileName.indexOf(".class"));
                             String filePackage = noSuffixFileName.replaceAll("\\\\", ".");
-                            Class<?> clazz = Class.forName(filePackage);
-                            classes.add(clazz);
+                            Class clazz = Class.forName(filePackage);
+                            if (null != clazz.getAnnotation(apiClass)) {
+                                classSet.add(clazz);
+                            }
                         }
                     }
-
-
                 } else if ("jar".equals(protocol)) {
                     // 如果是jar包文件
                     // 定义一个JarFile
                     JarFile jar;
                     try {
                         // 获取jar
+                        System.out.println(url);
+                        //jar:file:/D:/MyStudy/apidoc/target/apidoc-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/com/demo/web
                         JarURLConnection urlConnection = (JarURLConnection) url.openConnection();
                         jar = urlConnection.getJarFile();
                         // 从此jar包 得到一个枚举类
@@ -107,8 +104,10 @@ public class ClassScanUtil {
                                     // 去掉后面的".class" 获取真正的类名
                                     String className = name.substring(packageName.length() + 1, name.length() - 6);
                                     try {
-                                        // 添加到classes
-                                        classes.add(Class.forName(packageName + '.' + className));
+                                        Class aClass = Class.forName(packageName + '.' + className);
+                                        if (null != aClass.getAnnotation(apiClass)) {
+                                            classSet.add(aClass);
+                                        }
                                     } catch (ClassNotFoundException e) {
                                         e.printStackTrace();
                                     }
@@ -123,17 +122,18 @@ public class ClassScanUtil {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        //过滤，只要包含指定注解的类
-        for (Class c : classes) {
-            Annotation annotation = c.getAnnotation(Api.class);
-            if (null != annotation) {
-                classSet.add(c);
-            }
-        }
+
+        System.err.println(JsonUtil.toString(classSet));
         return classSet;
     }
 
 
+    /**
+     * 查找所有的文件
+     *
+     * @param dir      路径
+     * @param fileList 文件集合
+     */
     private static void fetchFileList(File dir, List<File> fileList) {
         if (dir.isDirectory()) {
             for (File f : Objects.requireNonNull(dir.listFiles())) {
