@@ -20,8 +20,7 @@ import java.util.jar.JarFile;
 public class ClassScanUtil {
 
     public static void main(String[] args) {
-//        String packageName = "com.demo.web";
-        String packageName = "com.demo.web.test.scanjar.com.demo.web";
+        String packageName = "com.demo.web";
         Set<Class> set = getClass4Annotation(packageName, Api.class);
         System.out.println(JsonUtil.toString(set));
     }
@@ -122,8 +121,7 @@ public class ClassScanUtil {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        System.err.println(JsonUtil.toString(classSet));
+//        System.err.println(JsonUtil.toString(classSet));
         return classSet;
     }
 
