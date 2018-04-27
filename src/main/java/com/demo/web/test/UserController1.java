@@ -1,9 +1,11 @@
-package com.demo.web;
+package com.demo.web.test;
 
 import com.apidoc.annotation.*;
 import com.apidoc.enumeration.DataType;
 import com.apidoc.enumeration.Method;
 import com.apidoc.enumeration.ParamType;
+import com.demo.web.Result;
+import com.demo.web.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,10 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "A用户管理(文档使用demo看这里)", mapping = "user")
+@Api(name = "测试003", mapping = "user")
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/user3")
+public class UserController1 {
 
     //--------------演示get请求--------------------
     //演示： get请求 无参数
@@ -172,11 +174,11 @@ public class UserController {
     @ApiReqParams(type = ParamType.JSON, value = {
             @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
             @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
-            @ApiParam(name = "creators", dataType = DataType.ARRAY, description = "创建人列表", object = "creators"),
+            @ApiParam(name = "creators", dataType = DataType.ARRAY, description = "创建人列表",object = "creators"),
 
-            @ApiParam(name = "creator", dataType = DataType.OBJECT, description = "创建人", belongTo = "creators", object = "creator"),
-            @ApiParam(name = "name", dataType = DataType.STRING, description = "创建人姓名", belongTo = "creator"),
-            @ApiParam(name = "age", dataType = DataType.NUMBER, description = "创建人年龄", belongTo = "creator"),
+            @ApiParam(name = "creator", dataType = DataType.OBJECT, description = "创建人",belongTo = "creators",object = "creator"),
+            @ApiParam(name = "name", dataType = DataType.STRING, description = "创建人姓名",belongTo = "creator"),
+            @ApiParam(name = "age", dataType = DataType.NUMBER, description = "创建人年龄",belongTo = "creator"),
     })
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, description = "状态编码"),
@@ -186,7 +188,6 @@ public class UserController {
             @ApiParam(name = "pageNum", dataType = DataType.NUMBER, description = "当前页码", belongTo = "PageResult"),
             @ApiParam(name = "result", dataType = DataType.ARRAY, description = "结果集", belongTo = "PageResult", object = "ArchiveType"),
             @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID", belongTo = "ArchiveType"),
-            @ApiParam(name = "ids", dataType = DataType.ARRAY, description = "归档类型ID数组", belongTo = "ArchiveType"),
             @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称", belongTo = "ArchiveType")
     })
     @PostMapping("/nest")
@@ -195,19 +196,31 @@ public class UserController {
     }
 
 
-    /**
-     * 测试返回值为 字符串数组
-     */
-    @ApiAction(name = "测试返回值为字符串数组", mapping = "/strings", method = Method.POST)
-    @ApiReqParams(type = ParamType.JSON)
-    @ApiRespParams({
-            @ApiParam(name = "idList", dataType = DataType.ARRAY, description = "ID列表集合")
 
+    @ApiAction(name = "测试三层对象嵌套", mapping = "/aaa", method = Method.POST)
+    @ApiReqParams(type = ParamType.JSON, value = {
+            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
+            @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
+            @ApiParam(name = "creator", dataType = DataType.STRING, description = "创建人")
     })
-    @PostMapping("/strings")
-    public Result strings() {
-        return Result.success("测试返回值为字符串数组");
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, description = "状态编码"),
+            @ApiParam(name = "message", dataType = DataType.STRING, description = "信息提示"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, description = "响应数据", object = "PageResult"),
+            @ApiParam(name = "pageSize", dataType = DataType.NUMBER, description = "分页条数", belongTo = "PageResult"),
+            @ApiParam(name = "pageNum", dataType = DataType.NUMBER, description = "当前页码", belongTo = "PageResult"),
+            @ApiParam(name = "result", dataType = DataType.ARRAY, description = "结果集", belongTo = "PageResult", object = "ArchiveType"),
+            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID", belongTo = "ArchiveType"),
+            @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称", belongTo = "ArchiveType")
+    })
+    @PostMapping("/aaa")
+    public Result aaa() {
+        return Result.success("测试三层对象嵌套成功，前后端都已经改为递归实现，支持对象间无限层级嵌套");
     }
+//
+//
+//
+//    @com.apidoc.annotation.ApiParam(name = "idList", dataType = DataType.ARRAY, defaultValue = "", description = "ID列表集合", belongTo = "ArchiveType", object = "String")
 
 
 }

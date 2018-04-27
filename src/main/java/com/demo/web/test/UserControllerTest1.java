@@ -1,9 +1,11 @@
-package com.demo.web;
+package com.demo.web.test;
 
 import com.apidoc.annotation.*;
 import com.apidoc.enumeration.DataType;
 import com.apidoc.enumeration.Method;
 import com.apidoc.enumeration.ParamType;
+import com.demo.web.Result;
+import com.demo.web.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

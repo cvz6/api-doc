@@ -53,7 +53,7 @@ public class ApiDocController {
                 apiDoc = new GeneratorApiDoc()
                         .setInfo(//设置文档基本信息
                                 new ApiDocInfo()
-                                        .setTitle("某莫系统后台管理文档")
+                                        .setTitle("某某系统后台管理文档")
                                         .setVersion("1.0")
                                         .setDescription("")
 
@@ -74,7 +74,6 @@ public class ApiDocController {
 
                         )
                         .generator(packageName);//指定生成哪个包下controller的文档
-                String doc = JsonUtil.toString(apiDoc);
             }
 
             System.err.println(JsonUtil.toString(apiDoc));
