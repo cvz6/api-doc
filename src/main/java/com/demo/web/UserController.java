@@ -259,4 +259,10 @@ public class UserController {
         }
     }
 
+    //演示： get请求 无参数 无响应值
+    @ApiAction(name = "测试无请求数据，无响应数据", mapping = "/noValue", method = Method.GET)
+    @GetMapping("/noValue")
+    public void noValue() {
+    }
+
 }
