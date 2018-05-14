@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
  * 该注解作用于controller类上，表明该类代表的功能模块的信息
  * </p>
  * 示例：@Api(name = "测试功能模块",mapping = "/apiTest")
- *
  * @Author: admin
  * @CreateDate: 2018/1/6 10:13
  */
@@ -35,5 +34,7 @@ public @interface Api {
     //url映射
     String mapping() default "";
 
+    //排序
+    int order() default Integer.MAX_VALUE;
 
 }

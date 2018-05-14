@@ -141,12 +141,13 @@ public class GeneratorApiDoc {
             //设置基本信息
             apiDocModel.setName(api.name());
             apiDocModel.setRootMapping(api.mapping());
+            apiDocModel.setOrder(api.order());
             //设置action列表信息
             apiDocModel.setList(getApiDocActionList(controllerClass));
             apiDocModelList.add(apiDocModel);
         }
         //排序： 根据模块的名称
-        apiDocModelList.sort(Comparator.comparing(ApiDocModel::getName));
+        apiDocModelList.sort(Comparator.comparing(ApiDocModel::getOrder));
         return apiDocModelList;
     }
 
@@ -170,12 +171,15 @@ public class GeneratorApiDoc {
 
                     ApiDocAction apiDocAction = new ApiDocAction();
                     apiDocAction.setName(apiAction.name());//设置名称
+                    apiDocAction.setOrder(apiAction.order());//设置排序
                     apiDocAction.setMethoduuid(methodUUID);//设置方法名的唯一标识
 
                     apiDocActionList.add(apiDocAction);
                 }
             }
         }
+        //排序
+        apiDocActionList.sort(Comparator.comparing(ApiDocAction::getOrder));
         return apiDocActionList;
     }
 

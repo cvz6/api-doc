@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "测试02", mapping = "user")
+@Api(name = "测试02", mapping = "user",order = 6)
 @RestController
 @RequestMapping("/test2")
 public class UserControllerTest2 {

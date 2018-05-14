@@ -14,6 +14,7 @@ public class ApiDocModel {
 
     private String name;//模块名称，表示该模块的功能
     private String rootMapping;// 父url路径映射 controller的RquestMapping值
+    private Integer order;//排序
 
     private List<ApiDocAction> list; //action列表
 
@@ -34,6 +35,14 @@ public class ApiDocModel {
 
     public void setRootMapping(String rootMapping) {
         this.rootMapping = rootMapping;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     public List<ApiDocAction> getList() {

@@ -23,14 +23,14 @@ import java.util.Map;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "A用户管理(文档使用demo看这里)", mapping = "user")
+@Api(name = "用户管理(文档使用demo看这里)", mapping = "user",order = 1)
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     //--------------演示get请求--------------------
     //演示： get请求 无参数
-    @ApiAction(name = "获取用户信息", mapping = "/get", method = Method.GET)
+    @ApiAction(name = "获取用户信息",order = 1,mapping = "/get", method = Method.GET)
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
             @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据", object = "user"),
@@ -82,10 +82,11 @@ public class UserController {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 
-    //演示：get请求 url带参数（参数拼接在url后，用问号拼接的参数）
-    @ApiAction(name = "通过id查询用户信息", mapping = "/get/param", method = Method.GET)
-    @ApiReqParams(type = ParamType.URL, value = {
-            @ApiParam(name = "id", dataType = DataType.STRING, defaultValue = "", description = "用户id")
+    //演示：get请求 url带多个参数（参数拼接在url后，用问号拼接的参数）
+    @ApiAction(name = "问号拼接参数方式", mapping = "/get/param", method = Method.GET)
+    @ApiReqParams(type = ParamType.URL_PARAM, value = {
+            @ApiParam(name = "id", dataType = DataType.STRING, defaultValue = "", description = "用户id"),
+            @ApiParam(name = "name", dataType = DataType.STRING, defaultValue = "", description = "用户名"),
     })
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
@@ -96,7 +97,25 @@ public class UserController {
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
     @GetMapping("/get/param")
-    public Result getUserByIDParam(String id) {
+    public Result getUserByIDParam(String id,String name) {
+        return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
+    }
+
+    //演示：get请求 url带参数（参数拼接在url后，用问号拼接的参数）
+    @ApiAction(name = "问号拼接参数方式，多个参数", mapping = "/get/params", method = Method.GET)
+    @ApiReqParams(type = ParamType.URL_PARAM, value = {
+            @ApiParam(name = "id", dataType = DataType.STRING, defaultValue = "", description = "用户id")
+    })
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据", object = "user"),
+            @ApiParam(name = "name", dataType = DataType.STRING, defaultValue = "", description = "姓名", belongTo = "user"),
+            @ApiParam(name = "age", dataType = DataType.NUMBER, defaultValue = "", description = "年龄", belongTo = "user"),
+
+            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
+    })
+    @GetMapping("/get/params")
+    public Result getUserByIDParams(String id) {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 

@@ -14,12 +14,21 @@ public class ApiDocAction {
     private String mapping;//url映射
     private String method;//请求方式 get，post
     private String description;//接口描述
+    private Integer order;//排序
 
     private ApiDocReqParams reqParams;//请求参数
     private ApiDocRespParams respParams;//响应参数
 
     private String methoduuid;// 方法名的唯一标识
 
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
 
     public String getDescription() {
         return description;

@@ -29,5 +29,8 @@ public @interface ApiAction {
     //请求方式 method
     Method method() default Method.GET;
 
+    //排序
+    int order() default Integer.MAX_VALUE;
+
 
 }
