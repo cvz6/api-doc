@@ -62,6 +62,26 @@ public class UserController {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 
+
+    //演示：get请求 url带多个参数（标准RESTful风格参数）
+    @ApiAction(name = "通过id和姓名获得用户信息", mapping = "/get/rest", method = Method.GET)
+    @ApiReqParams(type = ParamType.URL, value = {
+            @ApiParam(name = "id", dataType = DataType.STRING, defaultValue = "", description = "用户id"),
+            @ApiParam(name = "name", dataType = DataType.STRING, defaultValue = "", description = "用户名"),
+    })
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
+            @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据", object = "user"),
+            @ApiParam(name = "name", dataType = DataType.STRING, defaultValue = "", description = "姓名", belongTo = "user"),
+            @ApiParam(name = "age", dataType = DataType.NUMBER, defaultValue = "", description = "年龄", belongTo = "user"),
+
+            @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
+    })
+    @GetMapping("/get/rest/{id}/{name}")
+    public Result getUserByIDAndName(@PathVariable("id") String id,@PathVariable("name") String name) {
+        return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
+    }
+
     //演示：get请求 url带参数（参数拼接在url后，用问号拼接的参数）
     @ApiAction(name = "通过id查询用户信息", mapping = "/get/param", method = Method.GET)
     @ApiReqParams(type = ParamType.URL, value = {

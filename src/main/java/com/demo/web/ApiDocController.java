@@ -55,7 +55,10 @@ public class ApiDocController {
                                 new ApiDocInfo()
                                         .setTitle("某某系统后台管理文档")
                                         .setVersion("1.0")
-                                        .setDescription("")
+                                        .setDescription("问题描述\n" +
+                                                "1.描述一11111\n" +
+                                                "2.描述22222\n" +
+                                                "3.描述333333333\n")
 
                         )
                         .generator(packageName);//指定生成哪个包下controller的文档
