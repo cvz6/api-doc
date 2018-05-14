@@ -1,10 +1,24 @@
 package com.demo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ApidocApplication {
+
+    private static String port;
+    private static String host;
+
+    @Value("${server.port}")
+    public void setPort(String port) {
+        ApidocApplication.port = port;
+    }
+
+    @Value("${cloud.host}")
+    public void setHost(String host) {
+        ApidocApplication.host = host;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(ApidocApplication.class, args);
@@ -14,7 +28,7 @@ public class ApidocApplication {
 
     private static void printServerUrl() {
 
-        String url = String.format("http://%s%s%s", "localhost", ":8088", "/index.html");
+        String url = String.format("http://%s%s%s", host + ":", port, "/index.html");
 
         System.err.println("-----------------------------------------------------------------");
         System.err.println();

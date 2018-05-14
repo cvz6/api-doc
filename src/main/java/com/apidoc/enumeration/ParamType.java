@@ -24,7 +24,12 @@ public enum ParamType {
     /**
      * 请求数据是纯json数据
      */
-    JSON("json");
+    JSON("json"),
+
+    /**
+     * 请求参数在url，但是响应数据为blob（数据流） 比如返回图片验证码使用
+     */
+    URL_BLOB("url_blob");
 
     private final String param;
 

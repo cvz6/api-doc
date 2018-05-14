@@ -7,6 +7,15 @@ import com.apidoc.enumeration.ParamType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.RenderedImage;
+import java.io.IOException;
+import java.util.Map;
+
 /**
  * @Description: 用户Controller
  * <p>
@@ -209,5 +218,45 @@ public class UserController {
         return Result.success("测试返回值为字符串数组");
     }
 
+    /**
+     * 获取 图片随机验证码
+     */
+    @ApiAction(name = "获取随机验证码", description = "", mapping = "/getPictureCode", method = Method.GET)
+    @ApiReqParams(type = ParamType.URL_BLOB)
+    @ApiRespParams({
+            @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码(0.失败 1.成功)"),
+            @ApiParam(name = "data", dataType = DataType.STRING, defaultValue = "null", description = "响应数据"),
+            @ApiParam(name = "total", dataType = DataType.NUMBER, defaultValue = "0", description = "数据总条数"),
+            @ApiParam(name = "msg", dataType = DataType.STRING, defaultValue = "", description = "提示信息"),
+    })
+    @GetMapping("/getPictureCode")
+    public Result getPictureCode(HttpServletRequest request, HttpServletResponse resp) {
+        // 调用工具类生成的验证码和验证码图片
+        Map<String, Object> codeMap = CodeUtil.generateCodeAndImage();
+        String code = codeMap.get("code").toString();
+        System.err.println("验证码： " + code);
+
+        //缓存验证码
+        HttpSession session = request.getSession();
+        session.setAttribute("pictureCode", code);
+
+
+        // 禁止图像缓存
+        resp.setHeader("Pragma", "no-cache");
+        resp.setHeader("Cache-Control", "no-cache");
+        resp.setDateHeader("Expires", -1);
+        resp.setContentType("image/jpeg");
+        // 将图像输出到Servlet输出流中。
+        ServletOutputStream sos;
+        try {
+            sos = resp.getOutputStream();
+            ImageIO.write((RenderedImage) codeMap.get("image"), "jpeg", sos);
+            sos.close();
+            return Result.success("获取成功");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Result.fail("获取失败");
+        }
+    }
 
 }
