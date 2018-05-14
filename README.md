@@ -92,6 +92,7 @@ Api：写在类上，表明一个功能模块。
 属性：
 - name 模块名称
 - mapping url映射
+- order 排序顺序，int类型，数值小的排在前边，默认值为int最大值
 ![](https://upload-images.jianshu.io/upload_images/2833665-0ac022ed836cebfe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ApiAction： 写在方法上，表明一个功能点
@@ -99,6 +100,7 @@ ApiAction： 写在方法上，表明一个功能点
 - name 方法的功能名称
 - mapping url映射
 - description 描述
+- order 排序顺序，int类型，数值小的排在前边，默认值为int最大值
 - method 请求方式（get，post，put，delete）
 ![](https://upload-images.jianshu.io/upload_images/2833665-4af8001b0c02387f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -106,7 +108,9 @@ ApiReqParams： 请求参数
 属性：
 - type：参数类型
 >  - header  在请求头 
->- url  在url后拼接
+>- url  在url后拼接,restful风格的参数，示例： /{id}/{name}
+>- url_param  在url后拼接，以问号分隔拼接，示例： ?id=11&name=2
+>- url_blob  请求方式为url，响应数据为二进制流，比如图片流，随机验证码
 >- form  表单数据
 >- json  json格式
 - ApiParam :参数列表
