@@ -147,6 +147,7 @@ public class GeneratorApiDoc {
             apiDocModelList.add(apiDocModel);
         }
         //排序： 根据模块的名称
+        apiDocModelList.sort(Comparator.comparing(ApiDocModel::getName));
         apiDocModelList.sort(Comparator.comparing(ApiDocModel::getOrder));
         return apiDocModelList;
     }
@@ -179,6 +180,7 @@ public class GeneratorApiDoc {
             }
         }
         //排序
+        apiDocActionList.sort(Comparator.comparing(ApiDocAction::getName));
         apiDocActionList.sort(Comparator.comparing(ApiDocAction::getOrder));
         return apiDocActionList;
     }
