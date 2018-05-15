@@ -23,14 +23,14 @@ import java.util.Map;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "用户管理(文档使用demo看这里)", mapping = "user",order = 1)
+@Api(name = "用户管理(文档使用demo看这里)", mapping = "user", order = 1)
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     //--------------演示get请求--------------------
     //演示： get请求 无参数
-    @ApiAction(name = "获取用户信息",order = 1,mapping = "/get", method = Method.GET)
+    @ApiAction(name = "获取用户信息", order = 1, mapping = "/get", method = Method.GET)
     @ApiRespParams({
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码"),
             @ApiParam(name = "data", dataType = DataType.OBJECT, defaultValue = "null", description = "响应数据", object = "user"),
@@ -78,7 +78,7 @@ public class UserController {
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
     @GetMapping("/get/rest/{id}/{name}")
-    public Result getUserByIDAndName(@PathVariable("id") String id,@PathVariable("name") String name) {
+    public Result getUserByIDAndName(@PathVariable("id") String id, @PathVariable("name") String name) {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 
@@ -97,7 +97,7 @@ public class UserController {
             @ApiParam(name = "message", dataType = DataType.STRING, defaultValue = "", description = "提示信息")
     })
     @GetMapping("/get/param")
-    public Result getUserByIDParam(String id,String name) {
+    public Result getUserByIDParam(String id, String name) {
         return Result.success(new User("1001", "毁灭你们，与你何干！", 18));
     }
 
@@ -217,26 +217,29 @@ public class UserController {
      * 常见的参数是一个对象嵌套对象的类型
      */
     @ApiAction(name = "测试三层对象嵌套", mapping = "/nest", method = Method.POST)
-    @ApiReqParams(type = ParamType.JSON, value = {
-            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
-            @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
-            @ApiParam(name = "creators", dataType = DataType.ARRAY, description = "创建人列表", object = "creators"),
+    @ApiReqParams(type = ParamType.JSON,
+            description = "测试数据\n参数的描述\n\n测试换行，这个应空两行以后显示",
+            value = {
+                    @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
+                    @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
+                    @ApiParam(name = "creators", dataType = DataType.ARRAY, description = "创建人列表", object = "creators"),
 
-            @ApiParam(name = "creator", dataType = DataType.OBJECT, description = "创建人", belongTo = "creators", object = "creator"),
-            @ApiParam(name = "name", dataType = DataType.STRING, description = "创建人姓名", belongTo = "creator"),
-            @ApiParam(name = "age", dataType = DataType.NUMBER, description = "创建人年龄", belongTo = "creator"),
-    })
-    @ApiRespParams({
-            @ApiParam(name = "code", dataType = DataType.NUMBER, description = "状态编码"),
-            @ApiParam(name = "message", dataType = DataType.STRING, description = "信息提示"),
-            @ApiParam(name = "data", dataType = DataType.OBJECT, description = "响应数据", object = "PageResult"),
-            @ApiParam(name = "pageSize", dataType = DataType.NUMBER, description = "分页条数", belongTo = "PageResult"),
-            @ApiParam(name = "pageNum", dataType = DataType.NUMBER, description = "当前页码", belongTo = "PageResult"),
-            @ApiParam(name = "result", dataType = DataType.ARRAY, description = "结果集", belongTo = "PageResult", object = "ArchiveType"),
-            @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID", belongTo = "ArchiveType"),
-            @ApiParam(name = "ids", dataType = DataType.ARRAY, description = "归档类型ID数组", belongTo = "ArchiveType"),
-            @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称", belongTo = "ArchiveType")
-    })
+                    @ApiParam(name = "creator", dataType = DataType.OBJECT, description = "创建人", belongTo = "creators", object = "creator"),
+                    @ApiParam(name = "name", dataType = DataType.STRING, description = "创建人姓名", belongTo = "creator"),
+                    @ApiParam(name = "age", dataType = DataType.NUMBER, description = "创建人年龄", belongTo = "creator"),
+            })
+    @ApiRespParams(description = "测试数据\n 参数的描述 \n\n测试换行，这个应空两行以后显示",
+            value = {
+                    @ApiParam(name = "code", dataType = DataType.NUMBER, description = "状态编码"),
+                    @ApiParam(name = "message", dataType = DataType.STRING, description = "信息提示"),
+                    @ApiParam(name = "data", dataType = DataType.OBJECT, description = "响应数据", object = "PageResult"),
+                    @ApiParam(name = "pageSize", dataType = DataType.NUMBER, description = "分页条数", belongTo = "PageResult"),
+                    @ApiParam(name = "pageNum", dataType = DataType.NUMBER, description = "当前页码", belongTo = "PageResult"),
+                    @ApiParam(name = "result", dataType = DataType.ARRAY, description = "结果集", belongTo = "PageResult", object = "ArchiveType"),
+                    @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID", belongTo = "ArchiveType"),
+                    @ApiParam(name = "ids", dataType = DataType.ARRAY, description = "归档类型ID数组", belongTo = "ArchiveType"),
+                    @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称", belongTo = "ArchiveType")
+            })
     @PostMapping("/nest")
     public Result nest() {
         return Result.success("测试三层对象嵌套成功，前后端都已经改为递归实现，支持对象间无限层级嵌套");
@@ -262,7 +265,7 @@ public class UserController {
      */
     @ApiAction(name = "获取随机验证码", description = "", mapping = "/getPictureCode", method = Method.GET)
     @ApiReqParams(type = ParamType.URL_BLOB)
-    @ApiRespParams({
+    @ApiRespParams(value = {
             @ApiParam(name = "code", dataType = DataType.NUMBER, defaultValue = "0", description = "状态编码(0.失败 1.成功)"),
             @ApiParam(name = "data", dataType = DataType.STRING, defaultValue = "null", description = "响应数据"),
             @ApiParam(name = "total", dataType = DataType.NUMBER, defaultValue = "0", description = "数据总条数"),
@@ -302,6 +305,16 @@ public class UserController {
     @ApiAction(name = "测试无请求数据，无响应数据", mapping = "/noValue", method = Method.GET)
     @GetMapping("/noValue")
     public void noValue() {
+    }
+
+
+    //演示： 参数中增加描述信息
+    @ApiAction(name = "测试参数中增加描述信息", mapping = "/description", method = Method.GET)
+    @ApiReqParams(type = ParamType.URL, description = "测试数据\n 请求参数的描述")
+    @ApiRespParams(description = "测试数据\n 参数的描述 \n\n测试换行，这个应空两行以后显示")
+    @GetMapping("/description")
+    public Result noValue1() {
+        return Result.success("参数中增加描述信息");
     }
 
 }

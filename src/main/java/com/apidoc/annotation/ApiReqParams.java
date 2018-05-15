@@ -30,4 +30,9 @@ public @interface ApiReqParams {
      * 参数项
      */
     ApiParam[] value() default {};
+
+    /**
+     * 描述
+     */
+    String description() default  "";
 }

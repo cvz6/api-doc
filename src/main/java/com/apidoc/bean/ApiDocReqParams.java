@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class ApiDocReqParams {
     private String type;//请求参数的类型：header，url，form，json
+    private String description;//描述
     private List<ApiDocParam> params; //请求参数集合
 
     public String getType() {
@@ -17,6 +18,14 @@ public class ApiDocReqParams {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<ApiDocParam> getParams() {

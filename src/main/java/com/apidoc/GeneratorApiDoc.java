@@ -8,7 +8,6 @@ import com.apidoc.bean.*;
 import com.apidoc.exception.ApiDocException;
 import com.apidoc.utis.ClassScanUtil;
 import com.apidoc.utis.DatabaseMetaDataUtil;
-import com.apidoc.utis.utils.JsonUtil;
 import com.apidoc.utis.utils.StringUtil;
 
 import java.lang.reflect.Field;
@@ -225,6 +224,8 @@ public class GeneratorApiDoc {
             apiDocReqParams.setType(apiReqParams.type().toString());
             //设置请求参数列表
             apiDocReqParams.setParams(getApiParam(apiReqParams.value()));
+            //设置描述
+            apiDocReqParams.setDescription(apiReqParams.description());
         }
         return apiDocReqParams;
     }
@@ -241,6 +242,8 @@ public class GeneratorApiDoc {
         if (null != apiRespParams) {
             apiDocRespParams = new ApiDocRespParams();
             List<ApiDocParam> apiDocRespParamList = getApiParam(apiRespParams.value());
+            //设置描述
+            apiDocRespParams.setDescription(apiRespParams.description());
             apiDocRespParams.setParams(apiDocRespParamList);
         }
         return apiDocRespParams;

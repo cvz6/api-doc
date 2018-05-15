@@ -8,7 +8,18 @@ import java.util.List;
  * @CreateDate: 2018/1/7 11:38
  */
 public class ApiDocRespParams {
-    List<ApiDocParam> params;
+
+    private String description;
+
+    private List<ApiDocParam> params;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public List<ApiDocParam> getParams() {
         return params;
@@ -17,4 +28,5 @@ public class ApiDocRespParams {
     public void setParams(List<ApiDocParam> params) {
         this.params = params;
     }
+
 }

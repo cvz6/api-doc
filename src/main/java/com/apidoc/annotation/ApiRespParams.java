@@ -17,5 +17,10 @@ public @interface ApiRespParams {
     /**
      * 参数项
      */
-    ApiParam[] value();
+    ApiParam[] value() default {};
+
+    /**
+     * 描述
+     */
+    String description() default "";
 }
