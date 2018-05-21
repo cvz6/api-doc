@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @Author: peng.liu
  * @CreateDate: 2018/4/15 17:18
  */
-@Api(name = "测试ci持续集成", mapping = "user",order = 2)
+@Api(name = "测试ci持续集成,增加shell脚本", mapping = "user",order = 2)
 @RestController
 @RequestMapping("/user3")
 public class UserController1 {
