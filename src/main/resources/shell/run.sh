@@ -1,5 +1,5 @@
 #!/bin/bash
-echo stop application
-source stop.sh
-echo start application
-source start.sh
+echo "停止应用"
+source ./stop.sh
+echo "启动应用"
+source ./start.sh
