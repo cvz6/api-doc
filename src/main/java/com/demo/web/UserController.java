@@ -220,8 +220,8 @@ public class UserController {
     @ApiReqParams(type = ParamType.JSON,
             description = "测试数据\n参数的描述\n\n测试换行，这个应空两行以后显示",
             value = {
-                    @ApiParam(name = "typeId", dataType = DataType.STRING, description = "归档类型ID"),
-                    @ApiParam(name = "typeName", dataType = DataType.STRING, description = "归档类型名称"),
+                    @ApiParam(name = "typeId", dataType = DataType.NUMBER, defaultValue ="2222",description = "归档类型ID"),
+                    @ApiParam(name = "typeName", dataType = DataType.NUMBER, description = "归档类型名称"),
                     @ApiParam(name = "creators", dataType = DataType.ARRAY, description = "创建人列表", object = "creators"),
 
                     @ApiParam(name = "creator", dataType = DataType.OBJECT, description = "创建人", belongTo = "creators", object = "creator"),
