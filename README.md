@@ -50,7 +50,7 @@ java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 # 快速启动
 ## 1.拷贝jar包 利用maven引入你的项目
 首先把jar 包放到你的资源路径下 ，然后maven增加依赖，pom.xml应该类似如下
-jar包放在这里  /jar 文件下
+jar包放在这里  /jar 文件下  地址  https://github.com/liupeng328/api-doc/tree/master/jar
 ```
 <!--文档工具-->
         <dependency>
