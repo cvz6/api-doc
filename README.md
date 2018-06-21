@@ -48,6 +48,20 @@ java开发，根据代码自动生成api接口文档工具，支持RESTful风格
 ![请求参数和响应参数对应](https://upload-images.jianshu.io/upload_images/2833665-53359d84c7531029.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 # 快速启动
+## 1.拷贝jar包 利用maven引入你的项目
+首先把jar 包放到你的资源路径下 ，然后maven增加依赖，pom.xml应该类似如下
+```
+<!--文档工具-->
+        <dependency>
+            <groupId>com.apidoc</groupId>
+            <artifactId>apidoc</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/lib/apidoc-1.0.0.jar</systemPath>
+        </dependency>
+
+```
+## 2.拷贝源代码 复制代码到你的项目
 当成一个工具类用就可以了，下载本项目，拷贝包com.apidoc下的代码到你的系统，
 然后拷贝前端html页面，在static.apidoc文件下，到你的资源文件下。即可使用
 使用时，后台提供两个接口，目录文档接口和某个功能的详细接口
